@@ -1,6 +1,10 @@
 # LakeM<sup>2</sup>ARS
 
-Files provided in this repository are examples from a previous run. Users should download and edit the files accordingly to run the LakeM<sup>2</sup>ARS model to their specifications. 
+## How to use these files
+
+Files provided in this repository are examples from a previous run. 
+
+Users should ***download and edit*** the files accordingly to run the LakeM<sup>2</sup>ARS model to their specifications. 
 
 ## Model Description
 LakeM<sup>2</sup>ARS is adapted from the PRYSM v2.0 Lake Water Energy Balance Model, a one-dimensional lake thermal and hydrological model (Dee et al., 2018; Hostetler et al., 1990; Morrill et al., 2001; Patterson et al., 1988; Small et al., 1999). PRYSM was built to model relationships between climate, lake properties, and paleoclimate proxy data, and LakeM2ARS is the model to be used in a Martian environment. The model has the ability to simulate lake energy and water balance. Detailed descriptions of the PRYSM model are documented in Dee et al. (2018) and the model can be downloaded from GitHub (https://github.com/sylvia-dee/PRYSM). Adaptations to PRYSM to create LakeM<sup>2</sup>ARS are documented in the manuscript.
@@ -11,7 +15,9 @@ The lake model requires seven climate input variables including near-surface air
 
 One climate variable input file is required. It contains all necessary meteorological variables to force the model. In the example, monthly mean climate values were used to drive the model simulations. 
 
-The input file is in plain text format and can be named as **<mars_met_data.txt>**, or whatever you prefer. If users change the name of the .txt input file, they must ensure the change of file name is reflected in the .f90 code – see section “Model compilation and running” below. There is no header row in the file. Values in the file follows the structure as below:
+The input file is in plain text format and can be named as **<mars_met_data.txt>**, or whatever you prefer. In the provided example, this file is called **WB_C5_input.txt** If users change the name of the .txt input file, they must ensure the change of file name is reflected in the .f90 code – see section “Model compilation and running” below. 
+
+There is no header row in the file. Values in the file follows the structure as below:
 
 Column 1. Year
 
@@ -36,7 +42,7 @@ Column 10. Basin runoff (mm)
 *Columns 1 to 8 are required. Columns 9 and 10 are only used when water balance is modeled.*
 
 ### Model parameters
-Major model parameters are defined in the **<mars_lake.inc>** file, which contains lake specific parameters, simulation specific parameters and other fundamental physical and chemical parameters having fixed values. If users change the name of the .inc file, ensure the .f90 file is updated accordingly. 
+Major model parameters are defined in the **<mars_lake.inc>** file, which contains lake specific parameters, simulation specific parameters and other fundamental physical and chemical parameters having fixed values. If users change the name of the .inc file, ensure the .f90 file is updated accordingly. In the provided example, this file is called **mars_ice.inc**. 
 
 In the section of lake specific parameters, we specify the Mars’ obliquity (degrees), the lake’s latitude, longitude, maximum lake depth (meters), the elevation of the basin bottom (meters), the area of the drainage basin when lake depth equals zero (hectares), the neutral drag coefficient (unitless), shortwave extinction coefficient (meters-1), the fraction of advected air in the air mass over the lake (ranges from 0 to 1), albedo of melting and non-melting snow, prescribed or initial lake depth (meters, typically represents mean lake depth), prescribed or initial lake salinity (parts per thousand), and initial lake temperature (°C).
 
@@ -44,7 +50,7 @@ In the section of simulation specific parameters, we specify the number of years
 
 ### Output files
 
-Two output files are generated from the model. One file is named as <lake_surf.dat>, which contains monthly mean values of the following variables:
+Two output files are generated from the model. One file is named as **<lake_surf.dat>** (**cold_w5_surf.dat** in the example files), which contains monthly mean values of the following variables:
 
 Column 1. Day of year (accumulative)
 
@@ -70,7 +76,7 @@ Column 11. Maximum mixed layer depth (m)
 
 Column 12. Lake depth (m)
 
-The other output file is named as **<lake_Tprof.dat>**, which contains the lake temperature profile from lake surface to the bottom for each meter depth. There are no header rows in either output file.
+The other output file is named as **<lake_Tprof.dat>** (**cold_w5_Tprof.dat** in the example files), which contains the lake temperature profile from lake surface to the bottom for each meter depth. There are no header rows in either output file.
 
 ### Model compilation and running
 
@@ -78,11 +84,13 @@ To install LakeM<sup>2</sup>ARS v2.0, a user needs to have a working Fortran com
 
 Before compiling the model, a user needs to first adjust all necessary parameter values to the studied lake in the mars_lake.inc file. The mars_lake.inc file should be in the same path of the .f90 file. Moreover, the path for the climate input file should be defined in the mars_lake.inc file by changing the ‘datafile’ variable. Paths for the two output files can be defined at the ‘file_open’ subroutine in the .f90 code file.
 
-Once mars_lake.inc is ready to use, a user can navigate to the folder containing:
-1. Folder named "input", containiing only the **<mars_met_data.txt>** input file
+Once the files are all ready, create a folder containing:
+1. Folder named "input", containing only the .txt input file
 2. Folder named "output", which starts empty and will be populated with the output files
 3. The .f90 file
 4. The .inc file
+   
+*An example of the directory setup can be seen in the [Zenodo repository](https://doi.org/10.5281/zenodo.14927285).*
 
 Compile the code in terminal (Mac or Linux) or CMD (Windows) by ***editing*** and using the following command, as from the provided example:
 ```
