@@ -96,7 +96,7 @@ Compile the code in terminal (Mac or Linux) or CMD (Windows) by ***editing*** an
 ```
 gfortran -o WB_C5 cold_w5.f90
 ```
-Where *WB_C5* is a user-determined name of the model run, and *cold_w5.f90* is the name of the .90 code file. 
+Where *WB_C5* is a user-determined name of the model run, and *cold_w5.f90* is the name of the .90 code file. In the provided files, **cold_wrun_5** is the name of the compiled executable file. 
 
 Once the executable file ‘lakerun’ is created, the model can be run by ***editing*** and using the command:
 ```
