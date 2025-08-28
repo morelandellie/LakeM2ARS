@@ -2,12 +2,16 @@
 
 ## How to use these files
 
-Files provided in this repository are examples from a previous run. 
+Files provided in this repository are examples from a previous project. 
 
 Users should ***download and edit*** the files accordingly to run the LakeM<sup>2</sup>ARS model to their specifications. 
 
 ## Model Description
-LakeM<sup>2</sup>ARS is adapted from the PRYSM v2.0 Lake Water Energy Balance Model, a one-dimensional lake thermal and hydrological model (Dee et al., 2018; Hostetler et al., 1990; Morrill et al., 2001; Patterson et al., 1988; Small et al., 1999). PRYSM was built to model relationships between climate, lake properties, and paleoclimate proxy data, and LakeM2ARS is the model to be used in a Martian environment. The model has the ability to simulate lake energy and water balance. Detailed descriptions of the PRYSM model are documented in Dee et al. (2018) and the model can be downloaded from GitHub (https://github.com/sylvia-dee/PRYSM). Adaptations to PRYSM to create LakeM<sup>2</sup>ARS are documented in the manuscript.
+LakeM<sup>2</sup>ARS is adapted from the PRYSM v2.0 Lake Water Energy Balance Model, a one-dimensional lake thermal and hydrological model (Dee et al., 2018; Hostetler et al., 1990; Morrill et al., 2001; Patterson et al., 1988; Small et al., 1999). This is a archived repository; the living PRYSM repository can be viewed and downloaded from [GitHub](https://github.com/sylvia-dee/PRYSM).
+
+PRYSM was built to model relationships between climate, lake properties, and paleoclimate proxy data, and LakeM<sup>2</sup>ARS is the model to be used in a Martian environment. The model has the ability to simulate lake energy and water balance, and detailed descriptions of the PRYSM model are documented in Dee et al. (2018). 
+
+Adaptations to PRYSM to create LakeM<sup>2</sup>ARS are documented in a manuscript that is Under Review at *AGU Advances*.
 
 ### Input file
 
