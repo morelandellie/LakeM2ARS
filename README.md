@@ -1,5 +1,7 @@
 # LakeM<sup>2</sup>ARS
 
+Files provided in this repository are examples from a previous run. Users should download and edit the files accordingly to run the 
+
 ## Model Description
 LakeM<sup>2</sup>ARS is adapted from the PRYSM v2.0 Lake Water Energy Balance Model, a one-dimensional lake thermal and hydrological model (Dee et al., 2018; Hostetler et al., 1990; Morrill et al., 2001; Patterson et al., 1988; Small et al., 1999). PRYSM was built to model relationships between climate, lake properties, and paleoclimate proxy data, and LakeM2ARS is the model to be used in a Martian environment. The model has the ability to simulate lake energy and water balance. Detailed descriptions of the PRYSM model are documented in Dee et al. (2018) and the model can be downloaded from GitHub (https://github.com/sylvia-dee/PRYSM). Adaptations to PRYSM to create LakeM<sup>2</sup>ARS are documented in the manuscript.
 
@@ -76,7 +78,13 @@ To install LakeM<sup>2</sup>ARS v2.0, a user needs to have a working Fortran com
 
 Before compiling the model, a user needs to first adjust all necessary parameter values to the studied lake in the mars_lake.inc file. The mars_lake.inc file should be in the same path of the .f90 file. Moreover, the path for the climate input file should be defined in the mars_lake.inc file by changing the ‘datafile’ variable. Paths for the two output files can be defined at the ‘file_open’ subroutine in the .f90 code file.
 
-Once mars_lake.inc is ready to use, a user can compile the code in terminal (Mac or Linux) or CMD (Windows) by ***editing*** and using the following command, as from the provided example:
+Once mars_lake.inc is ready to use, a user can navigate to the folder containing:
+1. Folder named "input", containiing only the **<mars_met_data.txt>** input file
+2. Folder named "output", which starts empty and will be populated with the output files
+3. The .f90 file
+4. The .inc file
+
+Compile the code in terminal (Mac or Linux) or CMD (Windows) by ***editing*** and using the following command, as from the provided example:
 ```
 gfortran -o WB_C5 cold_w5.f90
 ```
@@ -87,3 +95,5 @@ Once the executable file ‘lakerun’ is created, the model can be run by ***ed
 ./WB_C5
 ```
 Where *WB_C5* is a user-determined name of the model run.
+
+Once the model run is complete, results can be found in the "output" folder.
